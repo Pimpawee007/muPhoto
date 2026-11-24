@@ -42,3 +42,41 @@
   .ig-profile { padding: 20px 0 25px; }
   .ig-stats { flex-wrap: wrap; }
 }
+
+/* FIX 2026-11-24: Home hero alignment and proportions.
+   .hero-inner previously used width:100%, overriding .container and
+   pushing all hero text against the left edge. */
+.hero .hero-inner {
+  width: min(1320px, calc(100% - 88px));
+  margin-inline: auto;
+  padding-block: 34px 42px;
+}
+.hero { min-height: clamp(590px, 49vw, 760px); }
+.hero:before {
+  inset: 0 0 0 34%;
+  background-image: linear-gradient(90deg,#fff 0%,#fffffff0 19%,#ffffff90 48%,#ffffff0a 85%),url('../assets/sample.jpg');
+  background-position: center 48%;
+}
+.hero .hero-kicker { font-size: clamp(20px,2.15vw,33px); gap: 13px; }
+.hero .hero-kicker b { font-size: clamp(48px,5vw,76px); }
+.hero h1 { font-size: clamp(58px,6.8vw,106px); letter-spacing: -.055em; }
+.hero h2 { font-size: clamp(30px,3.65vw,56px); }
+.hero p:not(.hero-quote) { max-width: min(760px, 65%); font-size: clamp(16px,1.5vw,22px); }
+.hero .hero-quote { max-width: 1020px !important; margin: 64px auto 0 !important; text-align: center; }
+@media (min-width: 801px) and (max-width: 1100px) {
+  .hero .hero-inner { width: calc(100% - 72px); }
+  .hero h1 { font-size: clamp(56px,6.5vw,78px); }
+  .hero p:not(.hero-quote) { max-width: 63%; }
+}
+@media (max-width: 800px) {
+  .hero .hero-inner { width: min(100% - 36px,650px); padding-block: 30px 38px; }
+  .hero { min-height: 590px; }
+  .hero:before { inset: 0; background-image: linear-gradient(90deg,#fff 0%,#ffffffeb 55%,#ffffff8a 100%),url('../assets/sample.jpg'); }
+  .hero p:not(.hero-quote) { max-width: 100%; }
+  .hero .hero-quote { margin-top: 32px !important; }
+}
+@media (max-width: 480px) {
+  .hero { min-height: 560px; }
+  .hero .hero-inner { width: calc(100% - 36px); }
+  .hero h1 { font-size: clamp(38px,10vw,53px); }
+}
